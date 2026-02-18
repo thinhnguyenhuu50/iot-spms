@@ -1,0 +1,23 @@
+{
+  "name": "iot-spms",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Smart Parking Management System - IoT-SPMS (HCMUT)",
+  "scripts": {
+    "dev": "concurrently \"pnpm --filter backend dev\" \"pnpm --filter frontend dev\"",
+    "dev:backend": "pnpm --filter backend dev",
+    "dev:frontend": "pnpm --filter frontend dev",
+    "build": "pnpm --filter frontend build",
+    "simulate": "pnpm --filter backend simulate"
+  },
+  "keywords": [
+    "iot",
+    "smart-parking",
+    "hcmut",
+    "pern-stack"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}
