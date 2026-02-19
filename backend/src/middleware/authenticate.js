@@ -1,14 +1,18 @@
 /**
  * Authentication Middleware
  *
- * Verifies the JWT token from the Authorization header.
- * Attaches the decoded user to `req.user`.
+ * Verifies the Supabase Auth JWT token from the Authorization header.
+ * Fetches the user's profile from public.users and attaches it to `req.user`.
  */
 
-import jwt from 'jsonwebtoken';
-import env from '../config/env.js';
+import supabase from '../config/db.js';
+import { supabaseAdmin } from '../config/db.js';
 
-export function authenticate(req, res, next) {
+/**
+ * Authenticate — verifies the Bearer token via Supabase Auth
+ * and attaches the full user profile to req.user.
+ */
+export async function authenticate(req, res, next) {
     const authHeader = req.headers.authorization;
 
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
@@ -18,11 +22,39 @@ export function authenticate(req, res, next) {
     const token = authHeader.split(' ')[1];
 
     try {
-        const decoded = jwt.verify(token, env.jwtSecret);
-        req.user = decoded;
+        // Verify token with Supabase Auth
+        const { data: { user }, error: authError } =
+            await supabase.auth.getUser(token);
+
+        if (authError || !user) {
+            return res.status(401).json({ error: 'Invalid or expired token' });
+        }
+
+        // Fetch the full profile from public.users (using admin to bypass RLS)
+        const { data: profile, error: profileError } = await supabaseAdmin
+            .from('users')
+            .select('*')
+            .eq('id', user.id)
+            .single();
+
+        if (profileError || !profile) {
+            return res.status(401).json({ error: 'User profile not found' });
+        }
+
+        // Attach to request
+        req.user = {
+            id: profile.id,
+            email: profile.email,
+            ssoId: profile.sso_id,
+            role: profile.role,
+            fullName: profile.full_name,
+            licensePlate: profile.license_plate,
+            balance: profile.balance,
+        };
+
         next();
     } catch (err) {
-        return res.status(401).json({ error: 'Invalid or expired token' });
+        return res.status(401).json({ error: 'Authentication failed' });
     }
 }
 
