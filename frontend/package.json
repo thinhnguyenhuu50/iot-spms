@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "postinstall": "pnpm approve-builds"
+    "postinstall": "pnpm approve-builds --all"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.97.0",
