@@ -6,6 +6,7 @@ import Footer from './components/layout/Footer';
 import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Admin from './pages/Admin';
+import History from './pages/History';
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
                 <Route path="/" element={<Dashboard />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/admin" element={<Admin />} />
+                <Route path="/history" element={<History />} />
               </Routes>
             </main>
             <Footer />

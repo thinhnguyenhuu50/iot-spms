@@ -2,18 +2,20 @@ import './StatusBadge.css';
 
 /**
  * Status badge for slot availability.
- * @param {{ status: 'FREE'|'OCCUPIED'|'UNKNOWN' }} props
+ * @param {{ status: string }} props — 'free', 'occupied', or 'unknown'
  */
 export default function StatusBadge({ status }) {
+    const normalized = (status || 'unknown').toLowerCase();
+
     const labels = {
-        FREE: 'Available',
-        OCCUPIED: 'Occupied',
-        UNKNOWN: 'Unknown',
+        free: 'Available',
+        occupied: 'Occupied',
+        unknown: 'Unknown',
     };
 
     return (
-        <span className={`status-badge status-badge--${status.toLowerCase()}`}>
-            {labels[status] || status}
+        <span className={`status-badge status-badge--${normalized}`}>
+            {labels[normalized] || status}
         </span>
     );
 }

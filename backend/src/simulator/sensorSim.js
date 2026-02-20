@@ -11,11 +11,11 @@ const API_URL = process.env.API_URL || 'http://localhost:5000';
 const SENSOR_API_KEY = process.env.SENSOR_API_KEY || 'secret-sensor-key';
 const INTERVAL_MS = 5000; // Send an event every 5 seconds
 
-// Define simulated sensors (sensor_id maps to a physical slot)
+// Define simulated sensors — must match seed data in 003_seed.sql
 const SENSORS = [
-    'S-A1', 'S-A2', 'S-A3', 'S-A4', 'S-A5',
-    'S-B1', 'S-B2', 'S-B3', 'S-B4', 'S-B5',
-    'S-C1', 'S-C2', 'S-C3', 'S-C4', 'S-C5',
+    'S-A01', 'S-A02', 'S-A03', 'S-A04', 'S-A05',
+    'S-B01', 'S-B02', 'S-B03', 'S-B04', 'S-B05',
+    'S-V01', 'S-V02', 'S-V03', 'S-V04', 'S-V05',
 ];
 
 // Track local state to simulate realistic toggling

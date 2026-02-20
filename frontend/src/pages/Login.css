@@ -46,8 +46,47 @@
     gap: 1.25rem;
 }
 
+.login-card__error {
+    padding: 0.625rem 0.875rem;
+    background: rgba(239, 68, 68, 0.12);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    color: #ef4444;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.login-card__success {
+    padding: 0.625rem 0.875rem;
+    background: rgba(16, 185, 129, 0.12);
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 8px;
+    color: #10b981;
+    font-size: 0.8125rem;
+    font-weight: 500;
+}
+
+.login-card__toggle {
+    display: block;
+    width: 100%;
+    margin-top: 1.25rem;
+    padding: 0.5rem;
+    background: transparent;
+    border: none;
+    color: var(--color-primary);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.login-card__toggle:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
 .login-card__footer {
-    margin-top: 1.5rem;
+    margin-top: 1rem;
     text-align: center;
     font-size: 0.75rem;
     color: var(--color-text-secondary);

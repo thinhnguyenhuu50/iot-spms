@@ -20,6 +20,11 @@ export default function Navbar() {
                     Dashboard
                 </Link>
                 {isAuthenticated && (
+                    <Link to="/history" className={`navbar__link ${isActive('/history') ? 'navbar__link--active' : ''}`}>
+                        My History
+                    </Link>
+                )}
+                {isAuthenticated && (
                     <Link to="/admin" className={`navbar__link ${isActive('/admin') ? 'navbar__link--active' : ''}`}>
                         Admin
                     </Link>
@@ -29,7 +34,7 @@ export default function Navbar() {
             <div className="navbar__actions">
                 {isAuthenticated ? (
                     <>
-                        <span className="navbar__user">{user?.name || user?.ssoId}</span>
+                        <span className="navbar__user">{user?.fullName || user?.ssoId || user?.email}</span>
                         <button className="navbar__logout" onClick={logout} id="logout-btn">
                             Logout
                         </button>

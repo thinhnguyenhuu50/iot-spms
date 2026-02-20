@@ -2,7 +2,7 @@
  * Slot Model — Data Access Layer for parking_slots table.
  */
 
-import supabase from '../config/db.js';
+import { supabaseAdmin as supabase } from '../config/db.js';
 
 /**
  * Fetch all parking slots.

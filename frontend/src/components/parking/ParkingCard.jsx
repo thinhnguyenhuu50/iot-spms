@@ -1,20 +1,23 @@
 import StatusBadge from './StatusBadge';
+import { formatCurrency } from '../../utils/formatters';
 import './ParkingCard.css';
 
 /**
  * Card showing a parking zone summary.
- * @param {{ zone: { name, free, occupied, total } }} props
+ * @param {{ zone: { id, name, free, occupied, total, unknown, hourly_rate } }} props
  */
 export default function ParkingCard({ zone }) {
     const occupancyPercent = zone.total > 0
         ? Math.round((zone.occupied / zone.total) * 100)
         : 0;
 
+    const zoneStatus = zone.free > 0 ? 'free' : 'occupied';
+
     return (
         <div className="parking-card" id={`zone-card-${zone.id}`}>
             <div className="parking-card__header">
                 <h3 className="parking-card__title">{zone.name}</h3>
-                <StatusBadge status={zone.free > 0 ? 'FREE' : 'OCCUPIED'} />
+                <StatusBadge status={zoneStatus} />
             </div>
             <div className="parking-card__stats">
                 <div className="parking-card__stat">
@@ -36,6 +39,11 @@ export default function ParkingCard({ zone }) {
                     style={{ width: `${occupancyPercent}%` }}
                 />
             </div>
+            {zone.hourly_rate && (
+                <div className="parking-card__rate">
+                    {formatCurrency(zone.hourly_rate)}/hr
+                </div>
+            )}
         </div>
     );
 }

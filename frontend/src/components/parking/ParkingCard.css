@@ -70,3 +70,10 @@
     border-radius: 3px;
     transition: width 0.5s ease;
 }
+
+.parking-card__rate {
+    margin-top: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+}

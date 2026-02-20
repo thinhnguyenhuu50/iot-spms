@@ -18,6 +18,31 @@
 .dashboard__subtitle {
     font-size: 0.9375rem;
     color: var(--color-text-secondary);
+    margin-bottom: 0.75rem;
+}
+
+.dashboard__legend {
+    display: flex;
+    gap: 1.25rem;
+    font-size: 0.8125rem;
+}
+
+.dashboard__legend-item {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.dashboard__legend-item--free {
+    color: #10b981;
+}
+
+.dashboard__legend-item--occupied {
+    color: #ef4444;
+}
+
+.dashboard__legend-item--unknown {
+    color: #9ca3af;
 }
 
 .dashboard__zones {
@@ -36,4 +61,25 @@
     font-weight: 700;
     color: var(--color-text);
     margin-bottom: 1rem;
+}
+
+.dashboard__empty {
+    color: var(--color-text-secondary);
+    font-size: 0.875rem;
+    padding: 2rem;
+    text-align: center;
+    background: var(--color-surface);
+    border-radius: 12px;
+    border: 1px solid var(--color-border);
+}
+
+.dashboard__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    gap: 0.5rem;
+    color: var(--color-text-secondary);
+    text-align: center;
 }
