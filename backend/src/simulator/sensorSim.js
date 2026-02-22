@@ -7,8 +7,10 @@
  * Usage: node src/simulator/sensorSim.js
  */
 
-const API_URL = process.env.API_URL || 'http://localhost:5000';
-const SENSOR_API_KEY = process.env.SENSOR_API_KEY || 'secret-sensor-key';
+import env from '../config/env.js';
+
+const API_URL = env.apiUrl;
+const SENSOR_API_KEY = env.sensorApiKey;
 const INTERVAL_MS = 5000; // Send an event every 5 seconds
 
 // Define simulated sensors — must match seed data in 003_seed.sql

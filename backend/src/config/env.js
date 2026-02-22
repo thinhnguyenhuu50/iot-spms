@@ -4,6 +4,7 @@ dotenv.config();
 
 export default {
     port: process.env.PORT || 5000,
+    apiUrl: process.env.API_URL || `http://localhost:${process.env.PORT || 5000}`,
     supabaseUrl: process.env.SUPABASE_URL || '',
     supabaseAnonKey: process.env.SUPABASE_ANON_KEY || '',
     supabaseServiceRoleKey: process.env.SUPABASE_SERVICE_ROLE_KEY || '',
